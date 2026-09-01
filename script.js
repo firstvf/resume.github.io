@@ -5,3 +5,7 @@ let language=localStorage.getItem('resume-language')||'ru';
 function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-i18n]').forEach(el=>{const value=translations[language][el.dataset.i18n];if(value!==undefined)el.innerHTML=value});const list=document.querySelector('[data-i18n-list]');if(list)list.innerHTML=garden[language].map(item=>`<li>${item}</li>`).join('');languageButton.textContent=language==='ru'?'EN':'RU'}
 languageButton.addEventListener('click',()=>{language=language==='ru'?'en':'ru';localStorage.setItem('resume-language',language);applyLanguage()});
 applyLanguage();
+
+const style=document.createElement('style');
+style.textContent='.site-header .header-inner{justify-content:flex-end}.site-header .nav{display:flex;align-items:center;justify-content:flex-end;gap:28px;margin:0}.site-header .nav a,.site-header .language-button{font-size:14px}.site-header .language-button{height:38px;min-width:38px;padding:0 10px;margin:0}';
+document.head.appendChild(style);
